@@ -6,12 +6,13 @@ import jakarta.persistence.*
 import org.springframework.data.annotation.LastModifiedBy
 import org.springframework.data.annotation.LastModifiedDate
 import java.time.LocalDateTime
+import java.util.UUID
 
 @Entity
 class Prompt(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    @GeneratedValue
+    val id: String = UUID.randomUUID().toString(),
 
     @Column(nullable = false, length = 50)
     var title: String,
