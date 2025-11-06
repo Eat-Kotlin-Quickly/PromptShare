@@ -6,28 +6,21 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "reply")
-class Reply(
-    replyContent: String,
-    user: User,
-    prompts: Prompt
-) {
+class Reply{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
-        protected set
+    val id: Long? = null
+
     @Column(nullable = false)
-    var replyContent = replyContent
-        protected set
+    var replyContent: String? = null
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    var user: User = user
-        protected set
+    var user: User? = null
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prompts_id", nullable = false)
-    var prompt: Prompt = prompts
-        protected set
+    var prompt: Prompt? = null
 
     fun updateContent(replyContent: String) {
         this.replyContent = replyContent

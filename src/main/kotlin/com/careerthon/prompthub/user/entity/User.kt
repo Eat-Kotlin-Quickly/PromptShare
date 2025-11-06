@@ -4,29 +4,19 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "users")
-class User(
-    googleLocalId: Long,
-    googleEmail: String,
-    googleFullName: String,
-    photoUrl: String
-) {
+class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var userId: Long? = null
-        protected set
+    val userId: Long? = null
 
     @Column(nullable = false)
-    var googleLocalId: Long = googleLocalId
-        protected set
+    val googleLocalId: Long? = null
 
     @Column(nullable = false)
-    var googleEmail: String = googleEmail
-        protected set
+    var googleEmail: String? = null
 
     @Column(nullable = false)
-    var googleFullName: String = googleFullName
-        protected set
+    var googleFullName: String? = null
 
-    var photoUrl: String = photoUrl
-        protected set
+    var photoUrl: String? = null
 }

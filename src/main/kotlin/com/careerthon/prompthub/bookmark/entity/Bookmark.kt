@@ -6,25 +6,20 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "bookmark")
-class Bookmark(
-    isBookMark: Boolean,
-    user: User,
-    prompts: Prompt
-) {
+class Bookmark{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var bookmarkId: Long? = null
-        protected set
-    var isBookMark: Boolean = isBookMark
-        protected set
+    val bookmarkId: Long? = null
+
+    @Column(nullable = false)
+    var isBookMark: Boolean? = null
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    var user: User = user
-        protected set
+    val user: User? = null
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prompts_id", nullable = false)
-    var prompts: Prompt = prompts
-        protected set
+    val prompt: Prompt? = null
+
 }
