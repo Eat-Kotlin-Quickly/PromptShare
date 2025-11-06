@@ -3,6 +3,8 @@ package com.careerthon.prompthub.prompt.entity
 import jakarta.persistence.Entity
 
 import jakarta.persistence.*
+import org.springframework.data.annotation.LastModifiedBy
+import org.springframework.data.annotation.LastModifiedDate
 import java.time.LocalDateTime
 
 @Entity
@@ -30,6 +32,7 @@ class Prompt(
 
     val createdAt: LocalDateTime = LocalDateTime.now(),
 
+    @LastModifiedDate
     var updatedAt: LocalDateTime? = null,
 ) {
     fun update(
@@ -46,6 +49,5 @@ class Prompt(
         this.imgUrl = imgUrl
         this.type = type
         this.category = category
-        this.updatedAt = LocalDateTime.now()
     }
 }
