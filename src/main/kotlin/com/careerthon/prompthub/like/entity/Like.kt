@@ -8,14 +8,12 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "likes")
 class Like(
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var id: Long? = null,
+    val id: Long? = null,
 
-    private var prompt: Prompt,
+    val prompt: Prompt,
 
-    private var isLike: Boolean = true
+    var isLike: Boolean = true
 )

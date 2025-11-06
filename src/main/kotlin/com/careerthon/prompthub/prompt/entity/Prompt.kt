@@ -1,4 +1,4 @@
-package com.careerthon.prompthub.prompt
+package com.careerthon.prompthub.prompt.entity
 
 import jakarta.persistence.Entity
 
@@ -9,30 +9,43 @@ import java.time.LocalDateTime
 class Prompt(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var id: Long? = null,
+    val id: Long? = null,
 
     @Column(nullable = false, length = 50)
-    private var title: String,
+    var title: String,
 
     @Column(columnDefinition = "TEXT")
-    private var description: String,
+    var description: String? = null,
 
     @Column(columnDefinition = "TEXT")
-    private var content: String,
+    var content: String? = null,
 
-    private var imgUrl: String,
-
-    @Enumerated(EnumType.STRING)
-    private var type: AIType,
+    var imgUrl: String? = null,
 
     @Enumerated(EnumType.STRING)
-    private var category: PromptCategory,
+    var type: AIType,
 
-    private var createdAt: LocalDateTime = LocalDateTime.now(),
+    @Enumerated(EnumType.STRING)
+    var category: PromptCategory,
 
-    private var updatedAt: LocalDateTime? = null,
+    val createdAt: LocalDateTime = LocalDateTime.now(),
+
+    var updatedAt: LocalDateTime? = null,
 ) {
-    fun update(title: String, description: String?, content: String, imgUrl: String?, type: AIType, category: PromptCategory) {
+    fun update(
+        title: String,
+        description: String?,
+        content: String?,
+        imgUrl: String?,
+        type: AIType,
+        category: PromptCategory
+    ) {
+        this.title = title
+        this.description = description
+        this.content = content
+        this.imgUrl = imgUrl
+        this.type = type
+        this.category = category
         this.updatedAt = LocalDateTime.now()
     }
 }
