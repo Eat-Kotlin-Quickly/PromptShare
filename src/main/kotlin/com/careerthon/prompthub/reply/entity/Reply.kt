@@ -1,6 +1,6 @@
 package com.careerthon.prompthub.reply.entity
 
-import com.careerthon.prompthub.prompts.entity.Prompts
+import com.careerthon.prompthub.prompt.entity.Prompt
 import com.careerthon.prompthub.user.entity.User
 import jakarta.persistence.*
 
@@ -9,7 +9,7 @@ import jakarta.persistence.*
 class Reply(
     replyContent: String,
     user: User,
-    prompts: Prompts
+    prompts: Prompt
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ class Reply(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prompts_id", nullable = false)
-    var prompts: Prompts = prompts
+    var prompt: Prompt = prompts
         protected set
 
     fun updateContent(replyContent: String) {
