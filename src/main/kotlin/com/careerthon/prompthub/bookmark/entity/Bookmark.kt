@@ -1,0 +1,30 @@
+package com.careerthon.prompthub.bookmark.entity
+
+import com.careerthon.prompthub.prompts.entity.Prompts
+import com.careerthon.prompthub.user.entity.User
+import jakarta.persistence.*
+
+@Entity
+@Table(name = "bookmark")
+class Bookmark(
+    isBookMark: Boolean,
+    user: User,
+    prompts: Prompts
+) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var bookmarkId: Long? = null
+        protected set
+    var isBookMark: Boolean? = null
+        protected set
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    var user: User = user
+        protected set
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "prompts_id", nullable = false)
+    var prompts: Prompts = prompts
+        protected set
+}
